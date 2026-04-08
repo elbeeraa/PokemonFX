@@ -61,6 +61,7 @@ public class MapController {
     private static List<NPC> npcs;
 
     public static void init(){
+
         mapData = new int[MapManager.mapHeight][MapManager.mapWidth];
         collisionMap = new int[MapManager.mapHeight][MapManager.mapWidth];
         teleportMap = new String[MapManager.mapHeight][MapManager.mapWidth];

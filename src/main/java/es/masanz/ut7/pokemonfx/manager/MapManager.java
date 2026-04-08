@@ -2,6 +2,7 @@ package es.masanz.ut7.pokemonfx.manager;
 
 import es.masanz.ut7.pokemonfx.model.base.Evento;
 import es.masanz.ut7.pokemonfx.model.base.Mapa;
+import es.masanz.ut7.pokemonfx.model.map.RutaInicial;
 import es.masanz.ut7.pokemonfx.model.pokemons.Bulbasaur;
 import es.masanz.ut7.pokemonfx.model.base.Entrenador;
 import es.masanz.ut7.pokemonfx.model.enums.CollisionType;
@@ -29,9 +30,11 @@ public class MapManager {
     public static void initMapas(){
         Mapa ruta1 = new Ruta1();
         Mapa ruta2 = new Ruta2();
+        Mapa rutaInicial = new RutaInicial();
         mapas = new HashMap<>();
         mapas.put(ruta1.getNombre(), ruta1);
         mapas.put(ruta2.getNombre(), ruta2);
+        mapas.put(rutaInicial.getNombre(), rutaInicial);
     }
 
     // Settea las variables necesarias en funcion de la ruta seleccionada
@@ -52,7 +55,14 @@ public class MapManager {
         if(mapas==null){
             initMapas();
         }
+        
+        // AQUI HE IMPLEMENTADO QUE LA RUTA INICIAL SIEMPRE SEA RUTA 1.
+        if(rutaSeleccionada == null) {
+            cargarRuta("Ruta inicial");
+        }
+        
         Mapa mapa = mapas.get(rutaSeleccionada);
+        // VOY A DEJAR ESTE CASO POR SI ACASO RUTA 1 SALDRÍA NULL (AUNQUE YA SABEMOS QUE NO DEBERIA PASAR)
         if(mapa==null) {
             generarMapaAleatorio(mapData, collisionMap, teleportMap, eventsMap, npcs);
         } else {

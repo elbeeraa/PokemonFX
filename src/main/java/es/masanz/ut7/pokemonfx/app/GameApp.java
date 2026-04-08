@@ -4,6 +4,7 @@ import es.masanz.ut7.pokemonfx.controller.MapController;
 import es.masanz.ut7.pokemonfx.model.pokemons.Bulbasaur;
 import es.masanz.ut7.pokemonfx.model.pokemons.Charmander;
 import es.masanz.ut7.pokemonfx.model.base.Entrenador;
+import es.masanz.ut7.pokemonfx.model.pokemons.Pikachu;
 import es.masanz.ut7.pokemonfx.model.pokemons.Squirtle;
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -23,6 +24,7 @@ public class GameApp extends Application {
         // TODO 00: AQUI DEFINIR VUESTRO ENTRENADOR INICIAL
         jugador = new Entrenador();
         jugador.incluirPokemonParaCombatir(0, new Bulbasaur(5));
+        jugador.incluirPokemonParaCombatir(0, new Pikachu(5));
         launch(args);
     }
 }

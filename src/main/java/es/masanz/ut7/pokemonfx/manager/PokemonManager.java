@@ -17,7 +17,8 @@ public class PokemonManager {
         if(pokemon==null){
             pokemon = new Bulbasaur(5);
         }
-        return pokemon;
+        return pokemon.clone();
+        // CAMBIADO A CLONACION - A VER SI FUNCIONA
     }
 
 }
