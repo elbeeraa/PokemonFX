@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CopilotDiffPersistence">
+    <option name="pendingDiffs">
+      <map>
+        <entry key="$PROJECT_DIR$/src/main/java/es/masanz/ut7/pokemonfx/model/pokemons/Charmander.java">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/src/main/java/es/masanz/ut7/pokemonfx/model/pokemons/Charmander.java" />
+              <option name="originalContent" value="package es.masanz.ut7.pokemonfx.model.pokemons;&#10;&#10;import es.masanz.ut7.pokemonfx.model.base.Ataque;&#10;import es.masanz.ut7.pokemonfx.model.base.Pokemon;&#10;import es.masanz.ut7.pokemonfx.model.enums.Tipo;&#10;import es.masanz.ut7.pokemonfx.model.type.Fuego;&#10;&#10;public class Charmander extends Pokemon implements Fuego {&#10;&#10;    public Charmander(int nivel) {&#10;        super(nivel);&#10;    }&#10;&#10;    @Override&#10;    public int nivelEvolucion() {&#10;        return 7;&#10;    }&#10;&#10;    @Override&#10;    public Pokemon pokemonAEvolucionar() {&#10;        Pokemon pokemon = new Squirtle(this.nivel);&#10;        return pokemon;&#10;    }&#10;&#10;    @Override&#10;    protected void asignarAtaques() {&#10;&#10;        Ataque aranazo = new Ataque(&quot;arañazo&quot;, 40, 100, Tipo.NORMAL, false, 35);&#10;        asignarAtaque(aranazo.getNombre(), aranazo);&#10;&#10;        Ataque ascuas = new Ataque(&quot;ascuas&quot;, 40, 100, Tipo.FUEGO, true, 25);&#10;        asignarAtaque(ascuas.getNombre(), ascuas);&#10;&#10;        Ataque lanzallamas = new Ataque(&quot;lanzallamas&quot;, 95, 100, Tipo.FUEGO, true, 10);&#10;        asignarAtaque(lanzallamas.getNombre(), lanzallamas);&#10;/*&#10;        Ataque cuchillada = new Ataque(&quot;cuchillada&quot;, 70, 100, Tipo.NORMAL, false, 20);&#10;        asignarAtaque(cuchillada.getNombre(), cuchillada);&#10;*/&#10;    }&#10;&#10;}&#10;" />
+              <option name="updatedContent" value="package es.masanz.ut7.pokemonfx.model.pokemons;&#10;&#10;import es.masanz.ut7.pokemonfx.model.base.Ataque;&#10;import es.masanz.ut7.pokemonfx.model.base.Pokemon;&#10;import es.masanz.ut7.pokemonfx.model.enums.Tipo;&#10;import es.masanz.ut7.pokemonfx.model.type.Fuego;&#10;&#10;public class Charmander extends Pokemon implements Fuego {&#10;&#10;    public Charmander(int nivel) {&#10;        super(nivel);&#10;    }&#10;&#10;    @Override&#10;    public int nivelEvolucion() {&#10;        return 7;&#10;    }&#10;&#10;    @Override&#10;    public Pokemon pokemonAEvolucionar() {&#10;        Pokemon pokemon = new Squirtle(this.nivel);&#10;        return pokemon;&#10;    }&#10;&#10;    @Override&#10;    protected void asignarAtaques() {&#10;&#10;        Ataque aranazo = new Ataque(&quot;arañazo&quot;, 40, 100, Tipo.NORMAL, false, 35);&#10;        asignarAtaque(aranazo.getNombre(), aranazo);&#10;&#10;        Ataque ascuas = new Ataque(&quot;ascuas&quot;, 40, 100, Tipo.FUEGO, true, 25);&#10;        asignarAtaque(ascuas.getNombre(), ascuas);&#10;&#10;        Ataque lanzallamas = new Ataque(&quot;lanzallamas&quot;, 95, 100, Tipo.FUEGO, true, 10);&#10;        asignarAtaque(lanzallamas.getNombre(), lanzallamas);&#10;/*&#10;        Ataque cuchillada = new Ataque(&quot;cuchillada&quot;, 70, 100, Tipo.NORMAL, false, 20);&#10;        asignarAtaque(cuchillada.getNombre(), cuchillada);&#10;*/&#10;    }&#10;&#10;    @Override&#10;    public Pokemon clone() {&#10;        Charmander clon = new Charmander(this.nivel);&#10;        if (this.apodo != null) {&#10;            clon.setApodo(this.apodo);&#10;        }&#10;        return clon;&#10;    }&#10;&#10;}" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/es/masanz/ut7/pokemonfx/model/pokemons/Pikachu.java">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/src/main/java/es/masanz/ut7/pokemonfx/model/pokemons/Pikachu.java" />
+              <option name="originalContent" value="    @Override&#10;    public Pokemon clone() {&#10;        Pikachu clon = new Pikachu(this.nivel);&#10;        if (this.apodo != null) {&#10;            clon.setApodo(this.apodo);&#10;        }&#10;        return clon;&#10;    }&#10;public class Pikachu extends Pokemon implements Electrico {&#10;    public Pikachu(int nivel){&#10;        super(nivel);&#10;    }&#10;&#10;    @Override&#10;    public int nivelEvolucion() {&#10;        return 7;&#10;    }&#10;&#10;    @Override&#10;    public Pokemon pokemonAEvolucionar() {&#10;        // Esto NO MOLA. Tener en cuenta que el apodo y los IV los perdemos si hacemos esto&#10;        Pokemon pokemon = new Charmander(this.nivel);&#10;        return pokemon;&#10;    }&#10;&#10;    @Override&#10;    protected void asignarAtaques() {&#10;        // Nivel 1: Placaje&#10;        Ataque placaje = new Ataque(&quot;placaje&quot;, 35, 95, Tipo.NORMAL, false, 35);&#10;        asignarAtaque(placaje.getNombre(), placaje);&#10;&#10;        // Nivel 10: Impactrueno&#10;        Ataque impactrueno = new Ataque(&quot;impactrueno&quot;, 40, 100, Tipo.ELECTRICO, false, 30);&#10;        asignarAtaque(impactrueno.getNombre(), impactrueno);&#10;&#10;        // Nivel 20: Chispa&#10;        Ataque chispa = new Ataque(&quot;chispa&quot;, 65, 100, Tipo.ELECTRICO, false, 20);&#10;        asignarAtaque(chispa.getNombre(), chispa);&#10;&#10;        // Nivel 25: Rayo&#10;        Ataque rayo = new Ataque(&quot;rayo&quot;, 90, 100, Tipo.ELECTRICO, true, 15);&#10;        asignarAtaque(rayo.getNombre(), rayo);&#10;&#10;        // Nivel 32: Trueno&#10;        Ataque trueno = new Ataque(&quot;trueno&quot;, 110, 70, Tipo.ELECTRICO, true, 10);&#10;        asignarAtaque(trueno.getNombre(), trueno);&#10;&#10;    }&#10;&#10;    public Pokemon clone(){&#10;        Pikachu pokemon = new Pikachu(this.nivel);&#10;        pokemon.setApodo(this.apodo);&#10;        pokemon.ataqueEspecialIV = &#10;        return pokemon;&#10;    }&#10;}&#10;" />
+              <option name="updatedContent" value="package es.masanz.ut7.pokemonfx.model.pokemons;&#10;&#10;import es.masanz.ut7.pokemonfx.model.base.Ataque;&#10;import es.masanz.ut7.pokemonfx.model.base.Pokemon;&#10;import es.masanz.ut7.pokemonfx.model.enums.Tipo;&#10;import es.masanz.ut7.pokemonfx.model.type.Electrico;&#10;&#10;public class Pikachu extends Pokemon implements Electrico {&#10;    public Pikachu(int nivel){&#10;        super(nivel);&#10;    }&#10;&#10;    @Override&#10;    public int nivelEvolucion() {&#10;        return 7;&#10;    }&#10;&#10;    @Override&#10;    public Pokemon pokemonAEvolucionar() {&#10;        // Esto NO MOLA. Tener en cuenta que el apodo y los IV los perdemos si hacemos esto&#10;        Pokemon pokemon = new Charmander(this.nivel);&#10;        return pokemon;&#10;    }&#10;&#10;    @Override&#10;    protected void asignarAtaques() {&#10;        // Nivel 1: Placaje&#10;        Ataque placaje = new Ataque(&quot;placaje&quot;, 35, 95, Tipo.NORMAL, false, 35);&#10;        asignarAtaque(placaje.getNombre(), placaje);&#10;&#10;        // Nivel 10: Impactrueno&#10;        Ataque impactrueno = new Ataque(&quot;impactrueno&quot;, 40, 100, Tipo.ELECTRICO, false, 30);&#10;        asignarAtaque(impactrueno.getNombre(), impactrueno);&#10;&#10;        // Nivel 20: Chispa&#10;        Ataque chispa = new Ataque(&quot;chispa&quot;, 65, 100, Tipo.ELECTRICO, false, 20);&#10;        asignarAtaque(chispa.getNombre(), chispa);&#10;&#10;        // Nivel 25: Rayo&#10;        Ataque rayo = new Ataque(&quot;rayo&quot;, 90, 100, Tipo.ELECTRICO, true, 15);&#10;        asignarAtaque(rayo.getNombre(), rayo);&#10;&#10;        // Nivel 32: Trueno&#10;        Ataque trueno = new Ataque(&quot;trueno&quot;, 110, 70, Tipo.ELECTRICO, true, 10);&#10;        asignarAtaque(trueno.getNombre(), trueno);&#10;&#10;    }&#10;&#10;    @Override&#10;    public Pokemon clone() {&#10;        Pikachu clon = new Pikachu(this.nivel);&#10;        if (this.apodo != null) {&#10;            clon.setApodo(this.apodo);&#10;        }&#10;        return clon;&#10;    }&#10;&#10;}" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/es/masanz/ut7/pokemonfx/model/pokemons/Squirtle.java">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/src/main/java/es/masanz/ut7/pokemonfx/model/pokemons/Squirtle.java" />
+              <option name="originalContent" value="package es.masanz.ut7.pokemonfx.model.pokemons;&#10;&#10;import es.masanz.ut7.pokemonfx.model.base.Ataque;&#10;import es.masanz.ut7.pokemonfx.model.base.Pokemon;&#10;import es.masanz.ut7.pokemonfx.model.enums.Tipo;&#10;import es.masanz.ut7.pokemonfx.model.type.Agua;&#10;&#10;public class Squirtle extends Pokemon implements Agua {&#10;&#10;    public Squirtle(int nivel) {&#10;        super(nivel);&#10;    }&#10;&#10;    @Override&#10;    public int nivelEvolucion() {&#10;        return -1;&#10;    }&#10;&#10;    @Override&#10;    public Pokemon pokemonAEvolucionar() {&#10;        return null;&#10;    }&#10;&#10;    @Override&#10;    protected void asignarAtaques() {&#10;        // Nivel 1: Placaje&#10;        Ataque placaje = new Ataque(&quot;placaje&quot;, 35, 95, Tipo.NORMAL, false, 35);&#10;        asignarAtaque(placaje.getNombre(), placaje);&#10;&#10;        // Nivel 7: Burbuja&#10;        Ataque burbuja = new Ataque(&quot;burbuja&quot;, 20, 100, Tipo.AGUA, true, 30);&#10;        asignarAtaque(burbuja.getNombre(), burbuja);&#10;&#10;        // Nivel 15: Pistola Agua&#10;        Ataque pistolaAgua = new Ataque(&quot;pistola agua&quot;, 40, 90, Tipo.AGUA, true, 20);&#10;        asignarAtaque(pistolaAgua.getNombre(), pistolaAgua);&#10;&#10;        // Nivel 20: Mordisco&#10;        Ataque mordisco = new Ataque(&quot;mordisco&quot;, 60, 90, Tipo.SINIESTRO, false, 25);&#10;        asignarAtaque(mordisco.getNombre(), mordisco);&#10;&#10;        // Nivel 31: Hidropulso&#10;        Ataque hidropulso = new Ataque(&quot;hidropulso&quot;, 60, 85, Tipo.AGUA, true, 20);&#10;        asignarAtaque(hidropulso.getNombre(), hidropulso);&#10;&#10;        // Nivel 37: Cabezazo&#10;        Ataque cabezazo = new Ataque(&quot;cabezazo&quot;, 70, 90, Tipo.NORMAL, false, 15);&#10;        asignarAtaque(cabezazo.getNombre(), cabezazo);&#10;&#10;        // Nivel 43: Hidrobomba&#10;        Ataque hidrobomba = new Ataque(&quot;hidrobomba&quot;, 110, 80, Tipo.AGUA, true, 5);&#10;        asignarAtaque(hidrobomba.getNombre(), hidrobomba);&#10;&#10;    }&#10;&#10;}&#10;" />
+              <option name="updatedContent" value="package es.masanz.ut7.pokemonfx.model.pokemons;&#10;&#10;import es.masanz.ut7.pokemonfx.model.base.Ataque;&#10;import es.masanz.ut7.pokemonfx.model.base.Pokemon;&#10;import es.masanz.ut7.pokemonfx.model.enums.Tipo;&#10;import es.masanz.ut7.pokemonfx.model.type.Agua;&#10;&#10;public class Squirtle extends Pokemon implements Agua {&#10;&#10;    public Squirtle(int nivel) {&#10;        super(nivel);&#10;    }&#10;&#10;    @Override&#10;    public int nivelEvolucion() {&#10;        return -1;&#10;    }&#10;&#10;    @Override&#10;    public Pokemon pokemonAEvolucionar() {&#10;        return null;&#10;    }&#10;&#10;    @Override&#10;    protected void asignarAtaques() {&#10;        // Nivel 1: Placaje&#10;        Ataque placaje = new Ataque(&quot;placaje&quot;, 35, 95, Tipo.NORMAL, false, 35);&#10;        asignarAtaque(placaje.getNombre(), placaje);&#10;&#10;        // Nivel 7: Burbuja&#10;        Ataque burbuja = new Ataque(&quot;burbuja&quot;, 20, 100, Tipo.AGUA, true, 30);&#10;        asignarAtaque(burbuja.getNombre(), burbuja);&#10;&#10;        // Nivel 15: Pistola Agua&#10;        Ataque pistolaAgua = new Ataque(&quot;pistola agua&quot;, 40, 90, Tipo.AGUA, true, 20);&#10;        asignarAtaque(pistolaAgua.getNombre(), pistolaAgua);&#10;&#10;        // Nivel 20: Mordisco&#10;        Ataque mordisco = new Ataque(&quot;mordisco&quot;, 60, 90, Tipo.SINIESTRO, false, 25);&#10;        asignarAtaque(mordisco.getNombre(), mordisco);&#10;&#10;        // Nivel 31: Hidropulso&#10;        Ataque hidropulso = new Ataque(&quot;hidropulso&quot;, 60, 85, Tipo.AGUA, true, 20);&#10;        asignarAtaque(hidropulso.getNombre(), hidropulso);&#10;&#10;        // Nivel 37: Cabezazo&#10;        Ataque cabezazo = new Ataque(&quot;cabezazo&quot;, 70, 90, Tipo.NORMAL, false, 15);&#10;        asignarAtaque(cabezazo.getNombre(), cabezazo);&#10;&#10;        // Nivel 43: Hidrobomba&#10;        Ataque hidrobomba = new Ataque(&quot;hidrobomba&quot;, 110, 80, Tipo.AGUA, true, 5);&#10;        asignarAtaque(hidrobomba.getNombre(), hidrobomba);&#10;&#10;    }&#10;&#10;    @Override&#10;    public Pokemon clone() {&#10;        Squirtle clon = new Squirtle(this.nivel);&#10;        if (this.apodo != null) {&#10;            clon.setApodo(this.apodo);&#10;        }&#10;        return clon;&#10;    }&#10;&#10;}" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/es/masanz/ut7/pokemonfx/model/type/Acero.java">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/src/main/java/es/masanz/ut7/pokemonfx/model/type/Acero.java" />
+              <option name="updatedContent" value="package es.masanz.ut7.pokemonfx.model.type;&#10;&#10;public interface Acero {&#10;}" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/es/masanz/ut7/pokemonfx/model/type/Bicho.java">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/src/main/java/es/masanz/ut7/pokemonfx/model/type/Bicho.java" />
+              <option name="updatedContent" value="package es.masanz.ut7.pokemonfx.model.type;&#10;&#10;public interface Bicho {&#10;}" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/es/masanz/ut7/pokemonfx/model/type/Dragon.java">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/src/main/java/es/masanz/ut7/pokemonfx/model/type/Dragon.java" />
+              <option name="updatedContent" value="package es.masanz.ut7.pokemonfx.model.type;&#10;&#10;public interface Dragon {&#10;}" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/es/masanz/ut7/pokemonfx/model/type/Fantasma.java">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/src/main/java/es/masanz/ut7/pokemonfx/model/type/Fantasma.java" />
+              <option name="updatedContent" value="package es.masanz.ut7.pokemonfx.model.type;&#10;&#10;public interface Fantasma {&#10;}" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/es/masanz/ut7/pokemonfx/model/type/Hada.java">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/src/main/java/es/masanz/ut7/pokemonfx/model/type/Hada.java" />
+              <option name="updatedContent" value="package es.masanz.ut7.pokemonfx.model.type;&#10;&#10;public interface Hada {&#10;}" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/es/masanz/ut7/pokemonfx/model/type/Hielo.java">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/src/main/java/es/masanz/ut7/pokemonfx/model/type/Hielo.java" />
+              <option name="updatedContent" value="package es.masanz.ut7.pokemonfx.model.type;&#10;&#10;public interface Hielo {&#10;}" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/es/masanz/ut7/pokemonfx/model/type/Lucha.java">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/src/main/java/es/masanz/ut7/pokemonfx/model/type/Lucha.java" />
+              <option name="updatedContent" value="package es.masanz.ut7.pokemonfx.model.type;&#10;&#10;public interface Lucha {&#10;}" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/es/masanz/ut7/pokemonfx/model/type/Normal.java">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/src/main/java/es/masanz/ut7/pokemonfx/model/type/Normal.java" />
+              <option name="updatedContent" value="package es.masanz.ut7.pokemonfx.model.type;&#10;&#10;public interface Normal {&#10;}" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/es/masanz/ut7/pokemonfx/model/type/Psiquico.java">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/src/main/java/es/masanz/ut7/pokemonfx/model/type/Psiquico.java" />
+              <option name="updatedContent" value="package es.masanz.ut7.pokemonfx.model.type;&#10;&#10;public interface Psiquico {&#10;}" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/es/masanz/ut7/pokemonfx/model/type/Roca.java">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/src/main/java/es/masanz/ut7/pokemonfx/model/type/Roca.java" />
+              <option name="updatedContent" value="package es.masanz.ut7.pokemonfx.model.type;&#10;&#10;public interface Roca {&#10;}" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/es/masanz/ut7/pokemonfx/model/type/Siniestro.java">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/src/main/java/es/masanz/ut7/pokemonfx/model/type/Siniestro.java" />
+              <option name="updatedContent" value="package es.masanz.ut7.pokemonfx.model.type;&#10;&#10;public interface Siniestro {&#10;}" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/es/masanz/ut7/pokemonfx/model/type/Tierra.java">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/src/main/java/es/masanz/ut7/pokemonfx/model/type/Tierra.java" />
+              <option name="updatedContent" value="package es.masanz.ut7.pokemonfx.model.type;&#10;&#10;public interface Tierra {&#10;}" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/es/masanz/ut7/pokemonfx/model/type/Veneno.java">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/src/main/java/es/masanz/ut7/pokemonfx/model/type/Veneno.java" />
+              <option name="updatedContent" value="package es.masanz.ut7.pokemonfx.model.type;&#10;&#10;public interface Veneno {&#10;}" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/es/masanz/ut7/pokemonfx/model/type/Volador.java">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/src/main/java/es/masanz/ut7/pokemonfx/model/type/Volador.java" />
+              <option name="updatedContent" value="package es.masanz.ut7.pokemonfx.model.type;&#10;&#10;public interface Volador {&#10;}" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
