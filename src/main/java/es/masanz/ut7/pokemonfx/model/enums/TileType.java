@@ -22,8 +22,7 @@ public enum TileType {
     MONTE_ESQUINA_INFERIOR_DERECHA("/pruebas/monte_esquina_inferior_derecha.png"),
     MURO_MARRON_CESPED("/pruebas/cesped_muro.png"),
     CARTEL("/pruebas/grava_cartel.png"),
-    TELEPORT_RED("/pruebas/teleport_red.png"),
-    CURACION("/pruebas/pokeball.png");
+    TELEPORT_RED("/pruebas/teleport_red.png");
 
     public final Image imagen;
 

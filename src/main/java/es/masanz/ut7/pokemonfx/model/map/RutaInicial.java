@@ -48,7 +48,7 @@ public class RutaInicial extends Mapa {
                 {1,2,1,1,1,1,1,1,1,3,3,7,7,7,7,2,1,1,1,1},
                 {1,2,1,1,1,1,1,1,1,3,3,7,7,7,7,2,1,1,1,1},
                 {1,2,1,10,3,3,3,3,3,3,3,1,1,1,1,2,1,1,1,1},
-                {1,2,1,1,3,3,3,3,3,3,3,1,1,1,2,2,1,1,1,1},
+                {1,2,1,9,3,3,3,3,3,3,3,1,1,1,2,2,1,1,1,1},
                 {1,2,1,1,3,3,1,1,1,1,1,1,1,2,2,2,1,1,1,1},
                 {1,2,5,5,3,3,8,5,5,5,5,5,5,5,2,2,1,1,1,1}
         };
@@ -147,11 +147,11 @@ public class RutaInicial extends Mapa {
                         // teleport
                         mapData[y][x] = TileType.CAMINO_BLANCO.ordinal();
                         collisionMap[y][x] = CollisionType.SUELO.ordinal();
-                        teleportMap[y][x] = "Ruta 2";
+                        teleportMap[y][x] = "Ruta 1";
                         break;
                     case 10:
                         // evento
-                        mapData[y][x] = TileType.CURACION.ordinal();
+                        mapData[y][x] = TileType.CESPED.ordinal();
                         collisionMap[y][x] = CollisionType.SUELO.ordinal();
                         CuracionPokemons eventoCuracion = new CuracionPokemons();
                         eventsMap[y][x] = eventoCuracion;
