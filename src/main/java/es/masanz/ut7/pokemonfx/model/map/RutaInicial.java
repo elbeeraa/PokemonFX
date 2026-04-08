@@ -5,10 +5,9 @@ import es.masanz.ut7.pokemonfx.model.base.Evento;
 import es.masanz.ut7.pokemonfx.model.base.Mapa;
 import es.masanz.ut7.pokemonfx.model.enums.CollisionType;
 import es.masanz.ut7.pokemonfx.model.enums.TileType;
+import es.masanz.ut7.pokemonfx.model.event.CuracionPokemons;
 import es.masanz.ut7.pokemonfx.model.fx.NPC;
-import es.masanz.ut7.pokemonfx.model.pokemons.Bulbasaur;
-import es.masanz.ut7.pokemonfx.model.pokemons.Charmander;
-import es.masanz.ut7.pokemonfx.model.pokemons.Squirtle;
+import es.masanz.ut7.pokemonfx.model.pokemons.*;
 
 import java.util.ArrayList;
 
@@ -18,16 +17,21 @@ import static es.masanz.ut7.pokemonfx.util.Configuration.ARRIBA;
 public class RutaInicial extends Mapa {
     protected void cargarPokemonSalvajes(){
         pokemonSalvajes = new ArrayList<>();
-        pokemonSalvajes.add(new Bulbasaur(80));
-        pokemonSalvajes.add(new Squirtle(100));
-        pokemonSalvajes.add(new Charmander(9));
+        int numeroRandom = (int) (Math.random() * 10);
+        pokemonSalvajes.add(new Bulbasaur(numeroRandom));
+        pokemonSalvajes.add(new Squirtle(numeroRandom));
+        pokemonSalvajes.add(new Charmander(numeroRandom));
+        pokemonSalvajes.add(new Pikachu(numeroRandom));
+        pokemonSalvajes.add(new Onix(numeroRandom));
+        pokemonSalvajes.add(new Diglett(numeroRandom));
+        pokemonSalvajes.add(new Machop(numeroRandom));
     }
 
     @Override
     protected void cargarMapa() {
 
         int[][] mapaRuta = {
-                {1,2,1,1,1,1,1,2,3,3,2,1,1,1,1,2,1,1,1,1},
+                {1,2,1,1,1,1,1,2,9,9,2,1,1,1,1,2,1,1,1,1},
                 {1,2,2,2,2,2,2,2,3,3,2,2,2,2,2,2,1,1,1,1},
                 {1,2,1,1,1,1,1,1,3,3,1,1,1,1,1,2,1,1,1,1},
                 {1,2,1,1,1,1,1,1,3,3,1,1,1,1,1,2,1,1,1,1},
@@ -43,15 +47,15 @@ public class RutaInicial extends Mapa {
                 {1,4,2,2,5,5,5,5,2,2,2,7,7,7,7,4,1,1,1,1},
                 {1,2,1,1,1,1,1,1,1,3,3,7,7,7,7,2,1,1,1,1},
                 {1,2,1,1,1,1,1,1,1,3,3,7,7,7,7,2,1,1,1,1},
-                {1,2,1,1,3,3,3,3,3,3,3,1,1,1,1,2,1,1,1,1},
+                {1,2,1,10,3,3,3,3,3,3,3,1,1,1,1,2,1,1,1,1},
                 {1,2,1,1,3,3,3,3,3,3,3,1,1,1,2,2,1,1,1,1},
                 {1,2,1,1,3,3,1,1,1,1,1,1,1,2,2,2,1,1,1,1},
                 {1,2,5,5,3,3,8,5,5,5,5,5,5,5,2,2,1,1,1,1}
         };
 
 
-        this.inicioX = 2;
-        this.inicioY = 2;
+        this.inicioX = 5;
+        this.inicioY = 19;
 
         this.altura = mapaRuta.length;
         this.anchura = mapaRuta[0].length;
@@ -81,10 +85,20 @@ public class RutaInicial extends Mapa {
         entrenador2.incluirPokemonParaCombatir(4, new Charmander(10));
         entrenador2.incluirPokemonParaCombatir(5, new Charmander(5));
 
+        Entrenador entrenador3 = new Entrenador();
+        entrenador2.incluirPokemonParaCombatir(0, new Charmander(50));
+        entrenador2.incluirPokemonParaCombatir(1, new Charmander(40));
+        entrenador2.incluirPokemonParaCombatir(2, new Charmander(30));
+        entrenador2.incluirPokemonParaCombatir(3, new Charmander(20));
+        entrenador2.incluirPokemonParaCombatir(4, new Charmander(10));
+        entrenador2.incluirPokemonParaCombatir(5, new Charmander(5));
+
         // ENTRENADOR CON APARIENCIA RANDOM
-        npcs.add(new NPC(2, 1, ABAJO, entrenador1));
+        npcs.add(new NPC(10, 2, ABAJO, entrenador1));
         // ENTRENADOR CON APARIENCIA QUE YO INDICO
-        npcs.add(new NPC(2, 3, ARRIBA, 0, entrenador2));
+        npcs.add(new NPC(6, 4, ARRIBA, 2, entrenador2));
+        npcs.add(new NPC(6, 6, ABAJO, 4, entrenador3));
+
 
         for (int y = 0; y < altura; y++) {
             for (int x = 0; x < anchura; x++) {
@@ -128,6 +142,19 @@ public class RutaInicial extends Mapa {
                         // cartelito
                         mapData[y][x] = TileType.CARTEL.ordinal();
                         collisionMap[y][x] = CollisionType.PARED.ordinal();
+                        break;
+                    case 9:
+                        // teleport
+                        mapData[y][x] = TileType.CAMINO_BLANCO.ordinal();
+                        collisionMap[y][x] = CollisionType.SUELO.ordinal();
+                        teleportMap[y][x] = "Ruta 2";
+                        break;
+                    case 10:
+                        // evento
+                        mapData[y][x] = TileType.CURACION.ordinal();
+                        collisionMap[y][x] = CollisionType.SUELO.ordinal();
+                        CuracionPokemons eventoCuracion = new CuracionPokemons();
+                        eventsMap[y][x] = eventoCuracion;
                         break;
                     default:
                         mapData[y][x] = TileType.CESPED.ordinal();

@@ -8,4 +8,5 @@ public interface Evento {
     // Si la imagen es null, no mostrara nada
     String imagenDelEvento();
 
+    boolean esCosumible();
 }

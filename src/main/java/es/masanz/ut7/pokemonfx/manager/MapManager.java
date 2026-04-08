@@ -39,6 +39,12 @@ public class MapManager {
 
     // Settea las variables necesarias en funcion de la ruta seleccionada
     public static void cargarRuta(String ruta){
+        //HE AÑADIDO ESTE IF PORQUE SI NO AL INICIAR EL JUEGO CON RUTA 1,
+        // AL NO HABER CARGADO TODAVIA LOS MAPAS, SALDRIA NULL Y NO SE SETTEARIAN
+        // LAS VARIABLES DE INICIOX, INICIOY, ANCHURA Y ALTURA
+        if(mapas == null){
+            initMapas();
+        }
         rutaSeleccionada = ruta;
         Mapa mapa = mapas.get(rutaSeleccionada);
         if(mapa!=null){
@@ -47,6 +53,7 @@ public class MapManager {
             inicioX = mapa.getInicioX() * TILE_SIZE;
             inicioY = mapa.getInicioY() * TILE_SIZE;
         }
+        System.out.println("CARGAR RUTA -> inicioX: " + inicioX);
     }
 
     // Este metodo asigna el mapa que se cargara en el juego
@@ -55,12 +62,7 @@ public class MapManager {
         if(mapas==null){
             initMapas();
         }
-        
-        // AQUI HE IMPLEMENTADO QUE LA RUTA INICIAL SIEMPRE SEA RUTA 1.
-        if(rutaSeleccionada == null) {
-            cargarRuta("Ruta inicial");
-        }
-        
+
         Mapa mapa = mapas.get(rutaSeleccionada);
         // VOY A DEJAR ESTE CASO POR SI ACASO RUTA 1 SALDRÍA NULL (AUNQUE YA SABEMOS QUE NO DEBERIA PASAR)
         if(mapa==null) {

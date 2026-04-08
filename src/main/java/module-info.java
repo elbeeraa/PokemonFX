@@ -5,6 +5,7 @@ module es.masanz.ut7.pokemonfx {
     requires jdk.xml.dom;
 
 
+
     // Abrimos los controladores para que FXML pueda acceder a ellos
     opens es.masanz.ut7.pokemonfx.controller to javafx.fxml;
 

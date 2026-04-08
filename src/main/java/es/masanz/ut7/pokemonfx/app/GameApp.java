@@ -23,7 +23,7 @@ public class GameApp extends Application {
     public static void main(String[] args) {
         // TODO 00: AQUI DEFINIR VUESTRO ENTRENADOR INICIAL
         jugador = new Entrenador();
-        jugador.incluirPokemonParaCombatir(0, new Bulbasaur(5));
+        jugador.incluirPokemonParaCombatir(1, new Bulbasaur(5));
         jugador.incluirPokemonParaCombatir(0, new Pikachu(5));
         launch(args);
     }

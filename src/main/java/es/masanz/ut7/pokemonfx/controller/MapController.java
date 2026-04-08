@@ -75,6 +75,7 @@ public class MapController {
 
         playerX = MapManager.inicioX;
         playerY = MapManager.inicioY;
+        System.out.println("INIT -> inicioX: " + MapManager.inicioX);
 
         targetX = playerX;
         targetY = playerY;
@@ -111,6 +112,10 @@ public class MapController {
     }
 
     public static void load(Stage primaryStage) {
+        // AQUI HE IMPLEMENTADO QUE LA RUTA INICIAL SIEMPRE SEA RUTA 1. TIENE QUE SER AQUI PORQUE TIENE QUE CCONSEGUIR LOS VALORES ANTES DE INICIARSE
+        if(MapManager.rutaSeleccionada == null){
+            MapManager.cargarRuta("Ruta inicial");
+        }
         init();
         mainStage = primaryStage;
         Canvas canvas = new Canvas(VIEW_WIDTH, VIEW_HEIGHT);
@@ -231,7 +236,10 @@ public class MapController {
                 }
                 if(eventsMap[tileY][tileX]!=null){
                     eventsMap[tileY][tileX].aplicarEfecto();
-                    eventsMap[tileY][tileX] = null;
+                    // HE IMPLEMENTADO ESTE BOOLEAN PARA QUE HAYA EVENTOS CONSUMIBLES Y PERMANENTES
+                    if(eventsMap[tileY][tileX].esCosumible()){
+                        eventsMap[tileY][tileX] = null;
+                    }
                     preRenderMap();
                     blockGame = true;
                     pressedKeys = new HashSet<>();
