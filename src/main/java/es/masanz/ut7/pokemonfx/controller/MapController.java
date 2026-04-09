@@ -145,19 +145,28 @@ public class MapController {
         gameLoop.start();
 
         Button actionButton = new Button("Gestionar nuestros Pokemon");
+        Button actionButtonMochila = new Button("Mochila");
         actionButton.setOnAction(e -> {
             PokePCController pcC = new PokePCController();
             pcC.load(primaryStage, mainStage.getScene());
         });
+        actionButtonMochila.setOnAction(e -> {
+            PokePCController pcC = new PokePCController();
+            pcC.loadMochila(primaryStage, mainStage.getScene());
+        });
         actionButton.setTranslateX(-(VIEW_WIDTH/2) + 100);
         actionButton.setTranslateY(-(VIEW_HEIGHT/2) + 25);
+        actionButtonMochila.setTranslateX(-(VIEW_WIDTH/2) + 225);
+        actionButtonMochila.setTranslateY(-(VIEW_HEIGHT/2) + 25);
         root.getChildren().add(actionButton);
+        root.getChildren().add(actionButtonMochila);
 
         primaryStage.setTitle("Ruta 1");
         primaryStage.setScene(scene);
         primaryStage.sceneProperty().addListener((obs, oldScene, newScene) -> {
             if (newScene == scene) {
                 System.out.println("¡Hemos vuelto a la escena principal!");
+                primaryStage.setTitle("Ruta 1");
                 iniciandoTransicion = false;
                 blockGame = false;
                 updateNPCList();

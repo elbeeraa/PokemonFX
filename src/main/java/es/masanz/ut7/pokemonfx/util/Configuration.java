@@ -25,4 +25,6 @@ public class Configuration {
     public static final String POKEMONS_BACK_PATH = "/pokemonesRAEspalda/";
     public static final int VELOCIDAD_ANIMACIONES = 1500;
 
+    public static final String ITEMS = "/items/";
+
 }

@@ -2,7 +2,9 @@ package es.masanz.ut7.pokemonfx.controller;
 
 import es.masanz.ut7.pokemonfx.app.GameApp;
 import es.masanz.ut7.pokemonfx.model.base.Ataque;
+import es.masanz.ut7.pokemonfx.model.base.Item;
 import es.masanz.ut7.pokemonfx.model.base.Pokemon;
+import es.masanz.ut7.pokemonfx.model.enums.TipoItem;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
@@ -20,6 +22,7 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 import static es.masanz.ut7.pokemonfx.util.Configuration.*;
 
@@ -29,6 +32,7 @@ public class PokePCController {
     private Scene previousStage;
     private Pokemon[] equipoPokemon;
     private List<Pokemon> storagePokemons;
+    private Map<TipoItem, Integer> inventario;
 
     public void load(Stage primaryStage, Scene previousStage) {
         this.primaryStage = primaryStage;
@@ -36,6 +40,14 @@ public class PokePCController {
         this.equipoPokemon = GameApp.jugador.getPokemonesCombate();
         this.storagePokemons = GameApp.jugador.getPokemonesCapturados();
         createPokemonSelector();
+    }
+    public void loadMochila(Stage primaryStage, Scene previousStage) {
+        this.primaryStage = primaryStage;
+        this.previousStage = previousStage;
+//        this.equipoPokemon = GameApp.jugador.getPokemonesCombate();
+//        this.storagePokemons = GameApp.jugador.getPokemonesCapturados();
+        this.inventario = GameApp.jugador.getInventario();
+        mochila();
     }
 
     public void volver() {
@@ -73,6 +85,91 @@ public class PokePCController {
         primaryStage.show();
     }
 
+    private void mochila() {
+        VBox mainContainer = new VBox(10);
+        mainContainer.setPadding(new Insets(10));
+        mainContainer.setAlignment(Pos.CENTER);
+
+        Button volverButton = new Button("Volver");
+        volverButton.setOnAction(e -> volver());
+
+        HBox mainLayout = new HBox(20);
+        mainLayout.setAlignment(Pos.CENTER);
+
+        VBox storageBox = createMochilaMap(inventario);
+
+        ScrollPane storageScrollPane = new ScrollPane(storageBox);
+        storageScrollPane.setFitToWidth(true);
+        storageScrollPane.setPrefHeight(380);
+        storageScrollPane.setMinHeight(380);
+        storageScrollPane.setMaxHeight(380);
+
+        mainLayout.getChildren().addAll(storageScrollPane);
+
+        mainContainer.getChildren().addAll(volverButton, mainLayout);
+
+        Scene selectorScene = new Scene(mainContainer, VIEW_WIDTH, VIEW_HEIGHT);
+        primaryStage.setScene(selectorScene);
+        primaryStage.setTitle("Mochila");
+        primaryStage.setResizable(false);
+        primaryStage.show();
+    }
+
+    private VBox createMochilaMap(Map<TipoItem, Integer> inventario) {
+        VBox listBox = new VBox(5);
+        listBox.setPadding(new Insets(5));
+        listBox.setPrefWidth(320);
+        listBox.setMinWidth(320);
+        listBox.setMaxWidth(320);
+        listBox.setStyle("-fx-border-color: black; -fx-border-width: 2px; -fx-padding: 5px;");
+
+        Label title = new Label("Mochila");
+        title.setFont(Font.font("Arial", FontWeight.BOLD, 14));
+        listBox.getChildren().add(title);
+
+        if(inventario.isEmpty()){
+            Label emptyLabel = new Label("No tienes ningún objeto en tu mochila.");
+            emptyLabel.setFont(Font.font("Arial", FontWeight.BOLD, 12));
+            listBox.getChildren().add(emptyLabel);
+        } else {
+            for (TipoItem tipoItem : inventario.keySet()) {
+                HBox row = createItemsRow(tipoItem);
+                listBox.getChildren().add(row);
+            }
+        }
+
+        return listBox;
+    }
+
+    private HBox createItemsRow(TipoItem item) {
+        HBox row = new HBox(5);
+        row.setAlignment(Pos.CENTER_LEFT);
+        row.setPrefHeight(52);
+        row.setMinHeight(52);
+        row.setMaxHeight(52);
+        row.setStyle("-fx-border-color: gray; -fx-border-width: 1px; -fx-padding: 5px;");
+
+        if(item!=null){
+            URL resource = getClass().getResource(ITEMS + item.getClass().getSimpleName() + ".png");
+            ImageView itemImage = new ImageView(new Image(resource.toString()));
+            itemImage.setFitWidth(40);
+            itemImage.setFitHeight(40);
+
+            Label nameLabel = new Label((item.getNombre() + " - Descripción: "+item.getDescripcion()));
+            nameLabel.setFont(Font.font("Arial", FontWeight.BOLD, 12));
+
+            VBox name = new VBox(5, nameLabel);
+
+           // HBox buttons = createButtons(item);
+
+            row.getChildren().addAll(itemImage,name);
+        }
+
+        return row;
+    }
+
+
+
     private VBox createPokemonList(List<Pokemon> pokemons, boolean isEquipo) {
         VBox listBox = new VBox(5);
         listBox.setPadding(new Insets(5));
@@ -102,7 +199,7 @@ public class PokePCController {
         row.setStyle("-fx-border-color: gray; -fx-border-width: 1px; -fx-padding: 5px;");
 
         if(pokemon!=null){
-            URL resource = getClass().getResource(POKEMONS_BACK_PATH + pokemon.getClass().getSimpleName() + "_espalda_G1.png");
+            URL resource = getClass().getResource(POKEMONS_FRONT_PATH + pokemon.getClass().getSimpleName() + "_RA.png");
             ImageView pokemonImage = new ImageView(new Image(resource.toString()));
             pokemonImage.setFitWidth(40);
             pokemonImage.setFitHeight(40);
@@ -309,7 +406,5 @@ public class PokePCController {
         primaryStage.setResizable(false);
         primaryStage.show();
     }
-
-
 
 }
