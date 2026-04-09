@@ -5,7 +5,7 @@ import es.masanz.ut7.pokemonfx.model.base.Evento;
 import es.masanz.ut7.pokemonfx.model.base.Mapa;
 import es.masanz.ut7.pokemonfx.model.enums.CollisionType;
 import es.masanz.ut7.pokemonfx.model.enums.TileType;
-import es.masanz.ut7.pokemonfx.model.event.CuracionPokemons;
+import es.masanz.ut7.pokemonfx.model.event.RecogerPocion;
 import es.masanz.ut7.pokemonfx.model.event.RecogerPokeballs;
 import es.masanz.ut7.pokemonfx.model.fx.NPC;
 import es.masanz.ut7.pokemonfx.model.pokemons.*;
@@ -18,7 +18,7 @@ import static es.masanz.ut7.pokemonfx.util.Configuration.ARRIBA;
 public class RutaInicial extends Mapa {
     protected void cargarPokemonSalvajes(){
         pokemonSalvajes = new ArrayList<>();
-        int numeroRandom = (int) (Math.random() * 10);
+        int numeroRandom = (int) (Math.random() * 6) + 3;
         pokemonSalvajes.add(new Bulbasaur(numeroRandom));
         pokemonSalvajes.add(new Squirtle(numeroRandom));
         pokemonSalvajes.add(new Charmander(numeroRandom));
@@ -151,14 +151,14 @@ public class RutaInicial extends Mapa {
                         teleportMap[y][x] = "Ruta 1";
                         break;
                     case 10:
-                        // evento
+                        // evento recoger poti
                         mapData[y][x] = TileType.CESPED.ordinal();
                         collisionMap[y][x] = CollisionType.SUELO.ordinal();
-                        CuracionPokemons eventoCuracion = new CuracionPokemons();
+                        RecogerPocion eventoCuracion = new RecogerPocion();
                         eventsMap[y][x] = eventoCuracion;
                         break;
                     case 11:
-                        // evento pokeball
+                        // evento recoger pokeball
                         mapData[y][x] = TileType.CESPED.ordinal();
                         collisionMap[y][x] = CollisionType.SUELO.ordinal();
                         RecogerPokeballs rp = new RecogerPokeballs();

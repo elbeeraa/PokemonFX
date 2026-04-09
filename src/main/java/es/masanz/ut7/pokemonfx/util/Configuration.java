@@ -27,4 +27,6 @@ public class Configuration {
 
     public static final String ITEMS = "/items/";
 
+    public static final int CURACION_PARCIAL = 10;
+
 }

@@ -4,7 +4,7 @@ import es.masanz.ut7.pokemonfx.model.base.Evento;
 import es.masanz.ut7.pokemonfx.model.base.Mapa;
 import es.masanz.ut7.pokemonfx.model.enums.CollisionType;
 import es.masanz.ut7.pokemonfx.model.enums.TileType;
-import es.masanz.ut7.pokemonfx.model.event.CuracionPokemons;
+import es.masanz.ut7.pokemonfx.model.event.RecogerPocion;
 import es.masanz.ut7.pokemonfx.model.pokemons.Bulbasaur;
 import es.masanz.ut7.pokemonfx.model.pokemons.Charmander;
 import es.masanz.ut7.pokemonfx.model.pokemons.Squirtle;
@@ -64,7 +64,7 @@ public class Ruta1 extends Mapa {
                     case 3:
                         mapData[y][x] = TileType.CESPED_HIERBA.ordinal();
                         collisionMap[y][x] = CollisionType.SUELO.ordinal();
-                        eventsMap[y][x] = new CuracionPokemons();
+                        eventsMap[y][x] = new RecogerPocion();
                         break;
                     case 4:
                         mapData[y][x] = TileType.CESPED_ARBUSTO.ordinal();

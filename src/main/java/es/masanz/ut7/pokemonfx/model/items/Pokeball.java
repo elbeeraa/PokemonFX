@@ -10,6 +10,6 @@ public class Pokeball extends Item {
     }
 
     public void usar() {
-        System.out.println("Has usado una Pokeball para intentar capturar un Pokémon salvaje.");
+        System.out.println("usar pokeball");
     }
 }

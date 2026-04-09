@@ -7,6 +7,7 @@ import es.masanz.ut7.pokemonfx.model.base.Pokemon;
 import es.masanz.ut7.pokemonfx.model.enums.TipoItem;
 import es.masanz.ut7.pokemonfx.model.fx.NPC;
 
+import es.masanz.ut7.pokemonfx.model.items.PocionParcial;
 import javafx.animation.*;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -29,7 +30,6 @@ import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-import javax.naming.CompositeName;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -150,6 +150,7 @@ public class CombateController {
         }
     }
 
+
     private void cargarBotonesDeAcciones(Label battleText, HBox buttonLayout){
         buttonLayout.getChildren().clear();
         battleText.setText("¿Qué quieres hacer?");
@@ -227,11 +228,14 @@ public class CombateController {
     private void cargarBotonesDeMochila(Label battleText, HBox buttonLayout){
         buttonLayout.getChildren().clear();
         battleText.setText("¿Qué quieres hacer?");
-        //TODO HACER BOTON DE POTI
+        Button potiButton = new Button("Usar POCIÓN");
+        potiButton.setOnAction(e -> {
+            curarPokemons(battleText, buttonLayout);
+        });
 
         Button pokeballButton = new Button("Usar POKEBALL");
         pokeballButton.setOnAction(e -> {
-            intentarCaputarPokemonSalvaje(battleText, buttonLayout);
+            intentarCapturarPokemonSalvaje(battleText, buttonLayout);
         });
 
         Button returnButton = new Button("Volver");
@@ -240,13 +244,37 @@ public class CombateController {
             cargarBotonesDeAcciones(battleText, buttonLayout);
         });
         if(items.get(TipoItem.POKEBALL) != null && items.get(TipoItem.POKEBALL) > 0) {
-            buttonLayout.getChildren().addAll(pokeballButton, returnButton);
-        } else {
-            buttonLayout.getChildren().add(returnButton);
+            buttonLayout.getChildren().addAll(pokeballButton);
         }
+        if(items.get(TipoItem.POTION) != null && items.get(TipoItem.POTION) > 0) {
+            buttonLayout.getChildren().add(potiButton);
+        }
+        buttonLayout.getChildren().add(returnButton);
     }
 
-    private void intentarCaputarPokemonSalvaje(Label battleText, HBox buttonLayout) {
+    private void curarPokemons(Label battleText, HBox buttonLayout) {
+        battleText.setText("Has curado a tus pokemons 10HP con una POCIÓN.");
+        buttonLayout.getChildren().clear();
+        PocionParcial potion = new PocionParcial();
+        potion.usar();
+        refrescarVidaPokemon();
+        items.put(TipoItem.POTION, items.get(TipoItem.POTION) - 1);
+        cargarBotonesDeCombate(battleText,buttonLayout);
+    }
+
+    private void refrescarVidaPokemon() {
+        playerInfo.getChildren().clear();
+        VBox nuevaInfo = crearInfoBox(
+                selectedPokemon.getApodo() != null ? selectedPokemon.getApodo() : selectedPokemon.getClass().getSimpleName(),
+                selectedPokemon.getNivel(),
+                selectedPokemon.getHpActual(),
+                selectedPokemon.getMaxHP(),
+                true
+        );
+        playerInfo.getChildren().addAll(nuevaInfo.getChildren());
+    }
+
+    private void intentarCapturarPokemonSalvaje(Label battleText, HBox buttonLayout) {
         battleText.setText("Has lanzado una POKEBALL");
         buttonLayout.getChildren().clear();
         items.put(TipoItem.POKEBALL, items.get(TipoItem.POKEBALL) - 1);
@@ -775,9 +803,9 @@ public class CombateController {
         VBox contenedor = new VBox(20, mensaje, botonContinuar);
         contenedor.setAlignment(Pos.CENTER);
         pantallaDerrota.getChildren().add(contenedor);
-        Scene escenaVictoria = new Scene(pantallaDerrota, primaryStage.getWidth(), primaryStage.getHeight());
+        Scene escenaDerrota = new Scene(pantallaDerrota, primaryStage.getWidth(), primaryStage.getHeight());
 
-        primaryStage.setScene(escenaVictoria);
+        primaryStage.setScene(escenaDerrota);
     }
 
     private void analizarEvolucionPokemon() {
