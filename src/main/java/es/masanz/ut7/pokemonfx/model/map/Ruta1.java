@@ -50,6 +50,7 @@ public class Ruta1 extends Mapa {
         this.eventsMap = new Evento[altura][anchura];
         this.npcs = new ArrayList<>();
 
+
         for (int y = 0; y < altura; y++) {
             for (int x = 0; x < anchura; x++) {
                 switch (mapaRuta[y][x]) {
@@ -73,7 +74,7 @@ public class Ruta1 extends Mapa {
                     case 5:
                         mapData[y][x] = TileType.TELEPORT_RED.ordinal();
                         collisionMap[y][x] = CollisionType.SUELO.ordinal();
-                        teleportMap[y][x] = "Ruta 2";
+                        teleportMap[y][x] = "Ruta inicial";
                         break;
                     default:
                         mapData[y][x] = TileType.CAMINO_BLANCO.ordinal();

@@ -49,7 +49,7 @@ public class RutaInicial extends Mapa {
                 {1,2,1,11,1,1,1,1,1,3,3,7,7,7,7,2,1,1,1,1},
                 {1,2,1,11,1,1,1,1,1,3,3,7,7,7,7,2,1,1,1,1},
                 {1,2,1,10,3,3,3,3,3,3,3,1,1,1,1,2,1,1,1,1},
-                {1,2,1,9,3,3,3,3,3,3,3,1,1,1,2,2,1,1,1,1},
+                {1,2,1,1,3,3,3,3,3,3,3,1,1,1,2,2,1,1,1,1},
                 {1,2,1,1,3,3,1,1,1,1,1,1,1,2,2,2,1,1,1,1},
                 {1,2,5,5,3,3,8,5,5,5,5,5,5,5,2,2,1,1,1,1}
         };
@@ -68,31 +68,29 @@ public class RutaInicial extends Mapa {
         this.eventsMap = new Evento[altura][anchura];
         this.npcs = new ArrayList<>();
 
-//        teleportMap[3][9] = "Ruta 1";
-
         Entrenador entrenador1 = new Entrenador();
-        entrenador1.incluirPokemonParaCombatir(0, new Bulbasaur(50));
-        entrenador1.incluirPokemonParaCombatir(1, new Bulbasaur(40));
-        entrenador1.incluirPokemonParaCombatir(2, new Bulbasaur(30));
-        entrenador1.incluirPokemonParaCombatir(3, new Bulbasaur(20));
-        entrenador1.incluirPokemonParaCombatir(4, new Bulbasaur(10));
-        entrenador1.incluirPokemonParaCombatir(5, new Bulbasaur(5));
+        entrenador1.incluirPokemonParaCombatir(0, new Bulbasaur(3));
+        entrenador1.incluirPokemonParaCombatir(1, new Bulbasaur(3));
+        entrenador1.incluirPokemonParaCombatir(2, new Bulbasaur(3));
+        entrenador1.incluirPokemonParaCombatir(3, new Bulbasaur(3));
+        entrenador1.incluirPokemonParaCombatir(4, new Bulbasaur(3));
+        entrenador1.incluirPokemonParaCombatir(5, new Bulbasaur(3));
 
         Entrenador entrenador2 = new Entrenador();
-        entrenador2.incluirPokemonParaCombatir(0, new Charmander(50));
-        entrenador2.incluirPokemonParaCombatir(1, new Charmander(40));
-        entrenador2.incluirPokemonParaCombatir(2, new Charmander(30));
-        entrenador2.incluirPokemonParaCombatir(3, new Charmander(20));
-        entrenador2.incluirPokemonParaCombatir(4, new Charmander(10));
-        entrenador2.incluirPokemonParaCombatir(5, new Charmander(5));
+        entrenador2.incluirPokemonParaCombatir(0, new Charmander(3));
+        entrenador2.incluirPokemonParaCombatir(1, new Charmander(3));
+        entrenador2.incluirPokemonParaCombatir(2, new Charmander(3));
+        entrenador2.incluirPokemonParaCombatir(3, new Charmander(3));
+        entrenador2.incluirPokemonParaCombatir(4, new Charmander(3));
+        entrenador2.incluirPokemonParaCombatir(5, new Charmander(3));
 
         Entrenador entrenador3 = new Entrenador();
-        entrenador2.incluirPokemonParaCombatir(0, new Charmander(50));
-        entrenador2.incluirPokemonParaCombatir(1, new Charmander(40));
-        entrenador2.incluirPokemonParaCombatir(2, new Charmander(30));
-        entrenador2.incluirPokemonParaCombatir(3, new Charmander(20));
-        entrenador2.incluirPokemonParaCombatir(4, new Charmander(10));
-        entrenador2.incluirPokemonParaCombatir(5, new Charmander(5));
+        entrenador3.incluirPokemonParaCombatir(0, new Charmander(3));
+        entrenador3.incluirPokemonParaCombatir(1, new Charmander(3));
+        entrenador3.incluirPokemonParaCombatir(2, new Charmander(3));
+        entrenador3.incluirPokemonParaCombatir(3, new Charmander(3));
+        entrenador3.incluirPokemonParaCombatir(4, new Charmander(3));
+        entrenador3.incluirPokemonParaCombatir(5, new Charmander(3));
 
         // ENTRENADOR CON APARIENCIA RANDOM
         npcs.add(new NPC(10, 2, ABAJO, entrenador1));
