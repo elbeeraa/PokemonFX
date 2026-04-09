@@ -4,6 +4,7 @@ import es.masanz.ut7.pokemonfx.app.GameApp;
 import es.masanz.ut7.pokemonfx.manager.PokemonManager;
 import es.masanz.ut7.pokemonfx.model.base.Ataque;
 import es.masanz.ut7.pokemonfx.model.base.Pokemon;
+import es.masanz.ut7.pokemonfx.model.enums.TipoItem;
 import es.masanz.ut7.pokemonfx.model.fx.NPC;
 
 import javafx.animation.*;
@@ -28,10 +29,12 @@ import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import javax.naming.CompositeName;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static es.masanz.ut7.pokemonfx.util.Configuration.*;
 
@@ -50,6 +53,8 @@ public class CombateController {
     private Pokemon npcPokemon;
     private Pokemon[] availablePokemons;
     private String ruta;
+
+    Map<TipoItem, Integer> items = GameApp.jugador.getInventario();
 
     public void load(Stage primaryStage, Scene previousStage, NPC npc, String ruta) {
         this.primaryStage = primaryStage;
@@ -222,24 +227,29 @@ public class CombateController {
     private void cargarBotonesDeMochila(Label battleText, HBox buttonLayout){
         buttonLayout.getChildren().clear();
         battleText.setText("¿Qué quieres hacer?");
+        //TODO HACER BOTON DE POTI
 
         Button pokeballButton = new Button("Usar POKEBALL");
-        Button returnButton = new Button("Volver");
-
         pokeballButton.setOnAction(e -> {
             intentarCaputarPokemonSalvaje(battleText, buttonLayout);
         });
 
+        Button returnButton = new Button("Volver");
+
         returnButton.setOnAction(e -> {
             cargarBotonesDeAcciones(battleText, buttonLayout);
         });
-
-        buttonLayout.getChildren().addAll(pokeballButton, returnButton);
+        if(items.get(TipoItem.POKEBALL) != null && items.get(TipoItem.POKEBALL) > 0) {
+            buttonLayout.getChildren().addAll(pokeballButton, returnButton);
+        } else {
+            buttonLayout.getChildren().add(returnButton);
+        }
     }
 
     private void intentarCaputarPokemonSalvaje(Label battleText, HBox buttonLayout) {
         battleText.setText("Has lanzado una POKEBALL");
         buttonLayout.getChildren().clear();
+        items.put(TipoItem.POKEBALL, items.get(TipoItem.POKEBALL) - 1);
 
         ImageView pokeballIV = new ImageView(new Image(getClass().getResource("/pruebas/pokeball_transparente.png").toExternalForm()));
 

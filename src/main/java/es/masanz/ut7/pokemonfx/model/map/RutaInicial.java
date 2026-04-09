@@ -6,6 +6,7 @@ import es.masanz.ut7.pokemonfx.model.base.Mapa;
 import es.masanz.ut7.pokemonfx.model.enums.CollisionType;
 import es.masanz.ut7.pokemonfx.model.enums.TileType;
 import es.masanz.ut7.pokemonfx.model.event.CuracionPokemons;
+import es.masanz.ut7.pokemonfx.model.event.RecogerPokeballs;
 import es.masanz.ut7.pokemonfx.model.fx.NPC;
 import es.masanz.ut7.pokemonfx.model.pokemons.*;
 
@@ -45,8 +46,8 @@ public class RutaInicial extends Mapa {
                 {1,4,7,7,1,1,1,1,1,3,3,3,3,3,3,4,1,1,1,1},
                 {1,4,1,1,1,1,1,1,1,3,3,7,7,7,7,4,1,1,1,1},
                 {1,4,2,2,5,5,5,5,2,2,2,7,7,7,7,4,1,1,1,1},
-                {1,2,1,1,1,1,1,1,1,3,3,7,7,7,7,2,1,1,1,1},
-                {1,2,1,1,1,1,1,1,1,3,3,7,7,7,7,2,1,1,1,1},
+                {1,2,1,11,1,1,1,1,1,3,3,7,7,7,7,2,1,1,1,1},
+                {1,2,1,11,1,1,1,1,1,3,3,7,7,7,7,2,1,1,1,1},
                 {1,2,1,10,3,3,3,3,3,3,3,1,1,1,1,2,1,1,1,1},
                 {1,2,1,9,3,3,3,3,3,3,3,1,1,1,2,2,1,1,1,1},
                 {1,2,1,1,3,3,1,1,1,1,1,1,1,2,2,2,1,1,1,1},
@@ -155,6 +156,13 @@ public class RutaInicial extends Mapa {
                         collisionMap[y][x] = CollisionType.SUELO.ordinal();
                         CuracionPokemons eventoCuracion = new CuracionPokemons();
                         eventsMap[y][x] = eventoCuracion;
+                        break;
+                    case 11:
+                        // evento pokeball
+                        mapData[y][x] = TileType.CESPED.ordinal();
+                        collisionMap[y][x] = CollisionType.SUELO.ordinal();
+                        RecogerPokeballs rp = new RecogerPokeballs();
+                        eventsMap[y][x] = rp;
                         break;
                     default:
                         mapData[y][x] = TileType.CESPED.ordinal();

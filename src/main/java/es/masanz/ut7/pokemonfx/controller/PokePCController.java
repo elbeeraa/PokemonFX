@@ -44,8 +44,6 @@ public class PokePCController {
     public void loadMochila(Stage primaryStage, Scene previousStage) {
         this.primaryStage = primaryStage;
         this.previousStage = previousStage;
-//        this.equipoPokemon = GameApp.jugador.getPokemonesCombate();
-//        this.storagePokemons = GameApp.jugador.getPokemonesCapturados();
         this.inventario = GameApp.jugador.getInventario();
         mochila();
     }
@@ -118,9 +116,9 @@ public class PokePCController {
     private VBox createMochilaMap(Map<TipoItem, Integer> inventario) {
         VBox listBox = new VBox(5);
         listBox.setPadding(new Insets(5));
-        listBox.setPrefWidth(320);
+        listBox.setPrefWidth(520);
         listBox.setMinWidth(320);
-        listBox.setMaxWidth(320);
+        listBox.setMaxWidth(520);
         listBox.setStyle("-fx-border-color: black; -fx-border-width: 2px; -fx-padding: 5px;");
 
         Label title = new Label("Mochila");
@@ -134,6 +132,9 @@ public class PokePCController {
         } else {
             for (TipoItem tipoItem : inventario.keySet()) {
                 HBox row = createItemsRow(tipoItem);
+                if(inventario.get(tipoItem) == 0){
+                    continue;
+                }
                 listBox.getChildren().add(row);
             }
         }
@@ -147,18 +148,33 @@ public class PokePCController {
         row.setPrefHeight(52);
         row.setMinHeight(52);
         row.setMaxHeight(52);
+//        row.setMinWidth(200);
         row.setStyle("-fx-border-color: gray; -fx-border-width: 1px; -fx-padding: 5px;");
 
         if(item!=null){
-            URL resource = getClass().getResource(ITEMS + item.getClass().getSimpleName() + ".png");
+            URL resource = getClass().getResource(ITEMS + item.getNombre().toLowerCase() + ".png");
+            System.out.println(resource);
             ImageView itemImage = new ImageView(new Image(resource.toString()));
             itemImage.setFitWidth(40);
             itemImage.setFitHeight(40);
 
-            Label nameLabel = new Label((item.getNombre() + " - Descripción: "+item.getDescripcion()));
-            nameLabel.setFont(Font.font("Arial", FontWeight.BOLD, 12));
+            Label nameLabel = new Label((item.getNombre()));
+            nameLabel.setTranslateY(10);
+            Label descripcionLabel = new Label(item.getDescripcion());
+            descripcionLabel.setTranslateY(10);
+            String cantidad = String.valueOf(inventario.get(item));
+            if(cantidad.equals("1")){
+                cantidad = "";
+            }
+            Label cantidadLabel = new Label(cantidad);
+            cantidadLabel.setTranslateX(420);
+            cantidadLabel.setTranslateY(-20);
 
-            VBox name = new VBox(5, nameLabel);
+            nameLabel.setFont(Font.font("Arial", FontWeight.BOLD, 13));
+            descripcionLabel.setFont(Font.font("Arial", FontWeight.NORMAL, 10));
+            cantidadLabel.setFont(Font.font("Arial", FontWeight.BOLD, 13));
+
+            VBox name = new VBox(5, nameLabel,descripcionLabel,cantidadLabel);
 
            // HBox buttons = createButtons(item);
 
