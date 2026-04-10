@@ -22,7 +22,18 @@ public enum TileType {
     MONTE_ESQUINA_INFERIOR_DERECHA("/pruebas/monte_esquina_inferior_derecha.png"),
     MURO_MARRON_CESPED("/pruebas/cesped_muro.png"),
     CARTEL("/pruebas/grava_cartel.png"),
-    TELEPORT_RED("/pruebas/teleport_red.png");
+    TELEPORT_RED("/pruebas/teleport_red.png"),
+    CASA("/rutas/casa.png"),
+    CASA2("/rutas/casa2.png"),
+    CASADERVEN1("/rutas/casaDER1.png"),
+    CASADERESQ("/rutas/casaDER2.png"),
+    CASADERVEN2("/rutas/casaDER3.png"),
+    CASAIZQVEN1("/rutas/casaIZQ1.png"),
+    CASAIZQESQ("/rutas/casaIZQ2.png"),
+    CASAIZQVEN2("/rutas/casaIZQ3.png"),
+    CASAPUERTA("/rutas/puerta.png"),
+    CASATECHOA("/rutas/techoA.png"),
+    CASATECHOB("/rutas/techoB.png");
 
     public final Image imagen;
 

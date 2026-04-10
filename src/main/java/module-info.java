@@ -6,7 +6,6 @@ module es.masanz.ut7.pokemonfx {
     requires javafx.graphics;
 
     requires java.naming;
-    requires es.masanz.ut7.pokemonfx;
 
 
     // Abrimos los controladores para que FXML pueda acceder a ellos
