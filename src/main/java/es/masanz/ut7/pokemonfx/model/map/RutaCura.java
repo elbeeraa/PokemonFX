@@ -15,8 +15,9 @@ import java.util.ArrayList;
 import static es.masanz.ut7.pokemonfx.util.Configuration.ABAJO;
 import static es.masanz.ut7.pokemonfx.util.Configuration.ARRIBA;
 
-public class RutaInicial extends Mapa {
-    protected void cargarPokemonSalvajes(){
+public class RutaCura extends Mapa {
+    @Override
+    protected void cargarPokemonSalvajes() {
         pokemonSalvajes = new ArrayList<>();
         pokemonSalvajes.add(new Bulbasaur(4));
         pokemonSalvajes.add(new Squirtle(4));
@@ -33,7 +34,6 @@ public class RutaInicial extends Mapa {
 
     @Override
     protected void cargarMapa() {
-
         int[][] mapaRuta = {
                 {1,2,1,1,1,1,1,2,9,9,2,1,1,1,1,2,1,1,1,1},
                 {1,2,2,2,2,2,2,2,3,3,2,2,2,2,2,2,1,1,1,1},

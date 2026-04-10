@@ -5,9 +5,8 @@ import es.masanz.ut7.pokemonfx.model.base.Pokemon;
 import es.masanz.ut7.pokemonfx.model.enums.Tipo;
 import es.masanz.ut7.pokemonfx.model.type.*;
 
-public class Bulbasaur extends Pokemon implements Planta, Veneno {
-
-    public Bulbasaur(int nivel){
+public class Lapras extends Pokemon implements Agua, Hielo {
+    public Lapras(int nivel){
         super(nivel);
     }
 
@@ -29,31 +28,29 @@ public class Bulbasaur extends Pokemon implements Planta, Veneno {
         Ataque placaje = new Ataque("placaje", 35, 95, Tipo.NORMAL, false, 35);
         asignarAtaque(placaje.getNombre(), placaje);
 
-        // Nivel 10: Látigo Cepa
-        Ataque latigoCepa = new Ataque("látigo cepa", 35, 90, Tipo.PLANTA, false, 15);
-        asignarAtaque(latigoCepa.getNombre(), latigoCepa);
+        // Nivel 10: Pistola Agua
+        Ataque pistolaAgua = new Ataque("pistola agua", 40, 100, Tipo.AGUA, false, 25);
+        asignarAtaque(pistolaAgua.getNombre(), pistolaAgua);
 
-        // Nivel 20: Hoja Afilada
-        Ataque hojaAfilada = new Ataque("hoja afilada", 55, 95, Tipo.PLANTA, false, 25);
-        asignarAtaque(hojaAfilada.getNombre(), hojaAfilada);
+        // Nivel 20: Rayo Hielo
+        Ataque rayoHielo = new Ataque("rayo hielo", 90, 100, Tipo.HIELO, true, 10);
+        asignarAtaque(rayoHielo.getNombre(), rayoHielo);
 
-        // Nivel 25: Doble Filo
-        Ataque dobleFilo = new Ataque("doble filo", 120, 80, Tipo.NORMAL, false, 10);
-        asignarAtaque(dobleFilo.getNombre(), dobleFilo);
+        // Nivel 25: Cascada
+        Ataque cascada = new Ataque("cascada", 80, 100, Tipo.AGUA, false, 15);
+        asignarAtaque(cascada.getNombre(), cascada);
 
-        // Nivel 32: Rayo Solar
-        Ataque rayoSolar = new Ataque("rayo solar", 120, 80, Tipo.PLANTA, true, 10);
-        asignarAtaque(rayoSolar.getNombre(), rayoSolar);
-
+        // Nivel 32: Ventisca
+        Ataque ventisca = new Ataque("ventisca", 110, 70, Tipo.HIELO, true, 5);
+        asignarAtaque(ventisca.getNombre(), ventisca);
     }
 
     @Override
     public Pokemon clone() {
-        Bulbasaur clon = new Bulbasaur(this.nivel);
+        Lapras clon = new Lapras(this.nivel);
         if (this.apodo != null) {
             clon.setApodo(this.apodo);
         }
         return clon;
     }
-
 }

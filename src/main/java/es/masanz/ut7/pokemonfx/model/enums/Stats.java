@@ -11,7 +11,11 @@ public enum Stats {
     PIKACHU("025", 35, 55, 40, 90, 50, 50, 82),
     DIGLETT("050", 10, 55, 25, 95, 35, 45, 81),
     MACHOP("066", 28, 80, 50, 35, 35, 35, 61),
-    ONIX("095", 35, 45, 160, 70, 30, 45, 77);
+    ONIX("095", 35, 45, 160, 70, 30, 45, 77),
+    GENGAR("094", 60, 65, 60, 110, 130, 75, 225),
+    SNORLAX("143", 160, 110, 65, 30, 65, 110, 189),
+    LAPRAS("131", 130, 85, 80, 60, 85, 95, 187),
+    PIDGEOT("018", 83, 80, 75, 91, 70, 70, 175);
 
     public final String numPokedex;
     public final int hp, ataque, defensa, velocidad, ataqueEspecial, defensaEspecial, expBase;
