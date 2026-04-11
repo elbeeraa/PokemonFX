@@ -33,7 +33,27 @@ public enum TileType {
     CASAIZQVEN2("/rutas/casaIZQ3.png"),
     CASAPUERTA("/rutas/puerta.png"),
     CASATECHOA("/rutas/techoA.png"),
-    CASATECHOB("/rutas/techoB.png");
+    CASATECHOB("/rutas/techoB.png"),
+    CARTELPOKE("/rutas/cartelPOKE.png"),
+
+
+    MURO("/rutas/muro.png"),
+    MURO1("/rutas/muro1.png"),
+    MURO2("/rutas/muro2.png"),
+    MURO3("/rutas/muro3.png"),
+    ORDENADOR1("/rutas/ordenador1.png"),
+    ORDENADOR2("/rutas/ordenador2.png"),
+    ORDENADOR3("/rutas/ordenador3.png"),
+    ORDENADOR4("/rutas/ordenador4.png"),
+    ORDENADOR5("/rutas/ordenador5.png"),
+    ORDENADOR6("/rutas/ordenador6.png"),
+    PARED("/rutas/pared.png"),
+    SILLA("/rutas/silla.png"),
+    SUELO1("/rutas/suelo1.png"),
+    SUELO2("/rutas/suelo2.png"),
+    TELEPORT_ALFOMBRA("/rutas/teleport.png");
+
+
 
     public final Image imagen;
 

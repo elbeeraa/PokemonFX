@@ -36,10 +36,10 @@ public class RutaCasa extends Mapa {
                 {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
                 {1,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
                 {1,2,2,2,1,1,1,1,1,1,1,1,1,1,1,4,1,1,1,1},
-                {1,2,1,1,15,15,15,15,15,1,1,5,5,5,5,2,1,1,1,1},
-                {1,2,1,1,16,16,16,16,16,1,1,5,5,5,5,2,1,1,1,1},
-                {1,2,1,1,11,12,17,9,8,1,1,1,1,1,1,2,1,1,1,1},
-                {1,2,1,1,13,7,14,7,10,1,1,1,1,1,2,2,1,1,1,1},
+                {1,2,1,1,15,15,15,15,15,15,1,5,5,5,5,2,1,1,1,1},
+                {1,2,1,1,16,16,16,16,16,16,1,5,5,5,5,2,1,1,1,1},
+                {1,2,1,1,11,12,17,17,9,8,1,1,1,1,1,2,1,1,1,1},
+                {1,2,1,1,13,7,14,18,7,10,1,1,1,1,2,2,1,1,1,1},
                 {1,2,1,1,1,1,3,5,5,5,1,1,1,1,2,2,1,1,1,1},
                 {1,2,1,1,1,1,3,3,1,1,1,1,1,1,2,2,1,1,1,1}
         };
@@ -162,7 +162,7 @@ public class RutaCasa extends Mapa {
                         // CASA
                         mapData[y][x] = TileType.CASAPUERTA.ordinal();
                         collisionMap[y][x] = CollisionType.SUELO.ordinal();
-                        teleportMap[y][x] = "Ruta 1";
+                        teleportMap[y][x] = "Casa pokemon";
                         break;
                     case 15:
                         // CASA
@@ -177,6 +177,11 @@ public class RutaCasa extends Mapa {
                     case 17:
                         // CASA
                         mapData[y][x] = TileType.CASA2.ordinal();
+                        collisionMap[y][x] = CollisionType.PARED.ordinal();
+                        break;
+                    case 18:
+                        // CASA
+                        mapData[y][x] = TileType.CARTELPOKE.ordinal();
                         collisionMap[y][x] = CollisionType.PARED.ordinal();
                         break;
                     default:
