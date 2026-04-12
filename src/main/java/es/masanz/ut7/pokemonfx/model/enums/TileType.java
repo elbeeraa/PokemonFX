@@ -51,6 +51,7 @@ public enum TileType {
     SILLA("/rutas/silla.png"),
     SUELO1("/rutas/suelo1.png"),
     SUELO2("/rutas/suelo2.png"),
+    ENFERMERA("/rutas/enfermera.png"),
     TELEPORT_ALFOMBRA("/rutas/teleport.png");
 
 

@@ -5,6 +5,7 @@ import es.masanz.ut7.pokemonfx.model.base.Evento;
 import es.masanz.ut7.pokemonfx.model.enums.CollisionType;
 import es.masanz.ut7.pokemonfx.model.enums.TileType;
 import es.masanz.ut7.pokemonfx.model.enums.TrainerType;
+import es.masanz.ut7.pokemonfx.model.event.CuraPokemons;
 import es.masanz.ut7.pokemonfx.model.fx.NPC;
 import javafx.animation.AnimationTimer;
 import javafx.animation.KeyFrame;
@@ -244,6 +245,13 @@ public class MapController {
                     reload(teleportMap[tileY][tileX]);
                 }
                 if(eventsMap[tileY][tileX]!=null){
+                    //HE IMPLEMENTADO ESTO PARA QUE CUANDO SEA EVENTO CURA POKEMONS BLOQUEE EL JUEGO Y LUEGO TENGA LA CONVERSACION
+                    if(eventsMap[tileY][tileX] instanceof CuraPokemons){
+                        blockGame = true;
+                        pressedKeys = new HashSet<>();
+                        loadConversation(mainStage.getScene());
+                        return;
+                    }
                     eventsMap[tileY][tileX].aplicarEfecto();
                     // HE IMPLEMENTADO ESTE BOOLEAN PARA QUE HAYA EVENTOS CONSUMIBLES Y PERMANENTES
                     if(eventsMap[tileY][tileX].esCosumible()){
@@ -309,6 +317,17 @@ public class MapController {
             try {
                 CombateController cc = new CombateController();
                 cc.load(mainStage, escenaOriginal, npc, MapManager.rutaSeleccionada);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+    }
+
+    private static void loadConversation(Scene escenaOriginal) {
+        Platform.runLater(() -> {
+            try {
+                ConversacionController cc = new ConversacionController();
+                cc.load(mainStage, escenaOriginal, MapManager.rutaSeleccionada);
             } catch (Exception e) {
                 e.printStackTrace();
             }

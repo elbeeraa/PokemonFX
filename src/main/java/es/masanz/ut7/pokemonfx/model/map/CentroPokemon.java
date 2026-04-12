@@ -4,6 +4,7 @@ import es.masanz.ut7.pokemonfx.model.base.Evento;
 import es.masanz.ut7.pokemonfx.model.base.Mapa;
 import es.masanz.ut7.pokemonfx.model.enums.CollisionType;
 import es.masanz.ut7.pokemonfx.model.enums.TileType;
+import es.masanz.ut7.pokemonfx.model.event.CuraPokemons;
 import es.masanz.ut7.pokemonfx.model.event.RecogerPocion;
 import es.masanz.ut7.pokemonfx.model.pokemons.Bulbasaur;
 import es.masanz.ut7.pokemonfx.model.pokemons.Charmander;
@@ -22,7 +23,7 @@ public class CentroPokemon extends Mapa {
 
         int[][] mapaRuta = {
                 {8, 7, 6, 11, 11, 2, 11, 11, 11, 11},
-                {9, 10, 16, 13, 13, 3, 13, 13, 13, 13},
+                {9, 10, 16, 13, 5, 3, 13, 13, 13, 13},
                 {1, 1, 1, 1, 1, 4, 14, 14, 14, 14},
                 {13, 13, 13, 13, 13, 13, 14, 14, 14, 14},
                 {14, 14, 14, 14, 14, 14, 14, 14, 14, 14},
@@ -66,7 +67,9 @@ public class CentroPokemon extends Mapa {
                         collisionMap[y][x] = CollisionType.PARED.ordinal();
                         break;
                     case 5:
-                        //TODO PONER SPRITE DE LA ENFERMERA?
+                        mapData[y][x] = TileType.ENFERMERA.ordinal();
+                        collisionMap[y][x] = CollisionType.PARED.ordinal();
+                        break;
                     case 6:
                         mapData[y][x] = TileType.ORDENADOR1.ordinal();
                         collisionMap[y][x] = CollisionType.PARED.ordinal();
@@ -98,6 +101,9 @@ public class CentroPokemon extends Mapa {
                     case 13:
                         mapData[y][x] = TileType.SUELO1.ordinal();
                         collisionMap[y][x] = CollisionType.SUELO.ordinal();
+                        if (x == 4 && y == 3) {
+                            eventsMap[y][x] = new CuraPokemons();
+                        }
                         break;
                     case 14:
                         mapData[y][x] = TileType.SUELO2.ordinal();
