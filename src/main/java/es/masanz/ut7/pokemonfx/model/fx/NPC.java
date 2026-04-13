@@ -24,30 +24,13 @@ public class NPC {
     private int numSprite;
     private Image imagen;
     private Entrenador entrenador;
-
-    // TODO 12: MODIFICAR ESTE CONSTRUCTOR PARA LLAMAR AL CONSTRUCTOR COMPLETO
+    // ESTOS DOS CONSTRUCTORES LLAMAN AL METODO QUE INICIALIZA ( EL COMPLETO )
     public NPC(int x, int y, Entrenador entrenador) {
-        this.x = x;
-        this.y = y;
-        this.mirandoA = (int) (Math.random() * 4);
-        this.elegirEntrenador = (int) (Math.random() * 4)+1;
-        this.entrenador = entrenador;
-        this.posX = x * TILE_SIZE;
-        this.posY = y * TILE_SIZE;
-        this.contadorCambioSprite = 0;
-        generateSprite();
+        this(x, y, (int) (Math.random() * 4), entrenador);
     }
 
     public NPC(int x, int y, int mirandoA, Entrenador entrenador) {
-        this.x = x;
-        this.y = y;
-        this.mirandoA = mirandoA;
-        this.elegirEntrenador = (int) (Math.random() * 4)+1;
-        this.entrenador = entrenador;
-        this.posX = x * TILE_SIZE;
-        this.posY = y * TILE_SIZE;
-        this.contadorCambioSprite = 0;
-        generateSprite();
+        this(x, y, mirandoA, (int) (Math.random() * 4) + 1, entrenador);
     }
 
     public NPC(int x, int y, int mirandoA, int elegirEntrenador, Entrenador entrenador) {

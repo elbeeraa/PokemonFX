@@ -53,7 +53,9 @@ public class Bulbasaur extends Pokemon implements Planta, Veneno {
         if (this.apodo != null) {
             clon.setApodo(this.apodo);
         }
+        clon.regenerarIVs();
         return clon;
+
     }
 
 }

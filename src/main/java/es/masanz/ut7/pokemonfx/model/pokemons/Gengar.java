@@ -52,6 +52,7 @@ public class Gengar extends Pokemon implements Fantasma, Veneno {
         if (this.apodo != null) {
             clon.setApodo(this.apodo);
         }
+        clon.regenerarIVs();
         return clon;
     }
 }

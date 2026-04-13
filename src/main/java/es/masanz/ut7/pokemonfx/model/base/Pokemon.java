@@ -192,8 +192,17 @@ public abstract class Pokemon {
     }
 
     // TODO 01: Implementar clone. El clonado deberá generar un pokemon con nuevos IV.
-    public abstract Pokemon clone();
-    // TODO ⚠️DUDA⚠️ HAY QUE IMPLEMENTAR DIRECTAMENTE EL CLONE AQUI QUE HAGA ESO O ES MEJOR IMPLEMENTAR EL CLONE EN CADA POKEMON. PORQUE AQUI DA PROBLEMA NO SE SABE QUE TIPO POKEMON HAY QUE CLONAR.
-    // LOS IVS SE GENERAN NUEVAMENTE EN EL CONSTRUCTOR DE FORMA ALEATORIA. COMO EN EL CONSTRUCTOR SE PIERDE EL APODO, SE ASIGNA AL CLON EL APODO DEL POKEMON A CLONAR SI ES QUE TIENE.
 
+    public abstract Pokemon clone();
+
+    // TODO ⚠️DUDA⚠️ HAY QUE IMPLEMENTAR DIRECTAMENTE EL CLONE AQUI QUE HAGA ESO O ES MEJOR IMPLEMENTAR EL CLONE EN CADA POKEMON. PORQUE AQUI DA PROBLEMA NO SE SABE QUE TIPO POKEMON HAY QUE CLONAR.
+    // ESTA BIEN?
+    public void regenerarIVs(){
+        this.hpIV = (int) (Math.random() * 32);
+        this.ataqueIV = (int) (Math.random() * 32);
+        this.defensaIV = (int) (Math.random() * 32);
+        this.velocidadIV = (int) (Math.random() * 32);
+        this.ataqueEspecialIV = (int) (Math.random() * 32);
+        this.defensaEspecialIV = (int) (Math.random() * 32);
+    }
 }

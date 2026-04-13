@@ -52,6 +52,7 @@ public class Diglett extends Pokemon implements Tierra {
         if (this.apodo != null) {
             clon.setApodo(this.apodo);
         }
+        clon.regenerarIVs();
         return clon;
     }
 }

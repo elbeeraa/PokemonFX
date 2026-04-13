@@ -59,6 +59,7 @@ public class Squirtle extends Pokemon implements Agua {
         if (this.apodo != null) {
             clon.setApodo(this.apodo);
         }
+        clon.regenerarIVs();
         return clon;
     }
 

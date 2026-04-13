@@ -45,6 +45,7 @@ public class Charmander extends Pokemon implements Fuego {
         if (this.apodo != null) {
             clon.setApodo(this.apodo);
         }
+        clon.regenerarIVs();
         return clon;
     }
 

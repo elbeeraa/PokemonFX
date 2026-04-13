@@ -51,6 +51,7 @@ public class Snorlax extends Pokemon implements Normal {
         if (this.apodo != null) {
             clon.setApodo(this.apodo);
         }
+        clon.regenerarIVs();
         return clon;
     }
 }

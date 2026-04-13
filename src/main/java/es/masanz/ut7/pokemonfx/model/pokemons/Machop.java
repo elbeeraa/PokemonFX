@@ -56,6 +56,7 @@ public class Machop extends Pokemon implements Lucha {
         if (this.apodo != null) {
             clon.setApodo(this.apodo);
         }
+        clon.regenerarIVs();
         return clon;
     }
 }

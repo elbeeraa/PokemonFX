@@ -51,6 +51,7 @@ public class Onix extends Pokemon implements Roca, Tierra {
         if (this.apodo != null) {
             clon.setApodo(this.apodo);
         }
+        clon.regenerarIVs();
         return clon;
     }
 }

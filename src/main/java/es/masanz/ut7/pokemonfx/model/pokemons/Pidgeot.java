@@ -51,6 +51,7 @@ public class Pidgeot extends Pokemon implements Volador, Normal {
         if (this.apodo != null) {
             clon.setApodo(this.apodo);
         }
+        clon.regenerarIVs();
         return clon;
     }
 }

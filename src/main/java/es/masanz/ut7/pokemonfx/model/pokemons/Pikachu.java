@@ -52,6 +52,7 @@ public class Pikachu extends Pokemon implements Electrico {
         if (this.apodo != null) {
             clon.setApodo(this.apodo);
         }
+        clon.regenerarIVs();
         return clon;
     }
 

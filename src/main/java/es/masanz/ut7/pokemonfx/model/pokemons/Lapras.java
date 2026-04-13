@@ -51,6 +51,7 @@ public class Lapras extends Pokemon implements Agua, Hielo {
         if (this.apodo != null) {
             clon.setApodo(this.apodo);
         }
+        clon.regenerarIVs();
         return clon;
     }
 }
